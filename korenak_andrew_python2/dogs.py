@@ -12,6 +12,7 @@ Migrate(app, db)
 
 #######################
 
+
 class Dogs(db.Model):
     __tablename__ = 'puppies'
 
