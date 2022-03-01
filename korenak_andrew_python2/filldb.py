@@ -1,43 +1,62 @@
-# This script will create some puppies, owners, and toys!
-# Note, if you run this more than once, you'll be creating dogs with the same
-# name and duplicate owners. The script will still work, but you'll see some
-# warnings. Watch the video for the full explanation.
-from models import db,Puppy,Owner
+# Only run ONCE. will create duplicates.
+from dbinit import db,Puppy,Owner
+import os
+from flask import Flask
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__)
+# If the mysql line isn't working for you comment it out and use the sqlite one.
 
 # Create 20 puppies
-brady = Puppy('Brady','2')
-buddy = Puppy('Buddy','5')
-hazel = Puppy('Hazel','1')
-minnie = Puppy('Minnie','7')
-cody = Puppy('Cody','6')
-lucky = Puppy('Lucky','5')
-gizmo = Puppy('Gizmo','3')
-princess = Puppy('Princess','2')
-gunner = Puppy('Gunner','1')
-katie = Puppy('Katie','10')
-layla = Puppy('Layla','8')
-foxy = Puppy('Foxy','6')
-winnie = Puppy('Winnie','4')
-ranger = Puppy('Ranger','3')
-bandit = Puppy('Bandit','1')
-emma = Puppy('Emma','2')
-sugar = Puppy('Sugar','2')
-grace = Puppy('Grace','3')
-murphy = Puppy('Murphy','3')
-lily = Puppy('Lily','6')
+brady = Puppy('Brady')
+buddy = Puppy('Buddy')
+hazel = Puppy('Hazel')
+minnie = Puppy('Minnie')
+cody = Puppy('Cody')
+lucky = Puppy('Lucky')
+gizmo = Puppy('Gizmo')
+princess = Puppy('Princess')
+gunner = Puppy('Gunner')
+katie = Puppy('Katie')
+layla = Puppy('Layla')
+foxy = Puppy('Foxy')
+winnie = Puppy('Winnie')
+ranger = Puppy('Ranger')
+bandit = Puppy('Bandit')
+emma = Puppy('Emma')
+sugar = Puppy('Sugar')
+grace = Puppy('Grace')
+murphy = Puppy('Murphy')
+lily = Puppy('Lily')
 
 # Add puppies to database
-db.session.add_all([brady, buddy, hazel, minnie, cody, lucky, gizmo, princess, gunner, katie, layla, foxy, winnie, ranger, bandit, emma, sugar, grace, murphy, lily
-])
+db.session.add(brady)
+db.session.add(buddy)
+db.session.add(hazel)
+db.session.add(minnie)
+db.session.add(cody)
+db.session.add(lucky)
+db.session.add(gizmo)
+db.session.add(princess)
+db.session.add(gunner)
+db.session.add(katie)
+db.session.add(layla)
+db.session.add(foxy)
+db.session.add(winnie)
+db.session.add(ranger)
+db.session.add(bandit)
+db.session.add(emma)
+db.session.add(sugar)
+db.session.add(grace)
+db.session.add(murphy)
+db.session.add(lily)
+
 db.session.commit()
-
 # Check with a query, this prints out all the puppies!
+'''
 print(Puppy.query.all())
-
-
-#  .first() or .all()[0] can be used to limit if multi dogs share name
-lily = Puppy.query.filter_by(name='lily')
-print(lily)
+'''
 
 # Owners
 nikola = Owner('Nikola',brady.id)
@@ -61,18 +80,30 @@ hanna = Owner('Hanna',grace.id)
 duncan = Owner('Duncan',murphy.id)
 kaydee = Owner('Kaydee',lily.id)
 
-
-
-db.session.add_all([nikola, harri, yousaf, howard, felicity, akbar, warwick, timur, tess, monty, crystal, reece, kieron, shanai, tyreke, reegan, darcie, hanna, duncan, kaydee
-])
-
+db.session.add(nikola)
+db.session.add(harri)
+db.session.add(yousaf)
+db.session.add(howard)
+db.session.add(felicity)
+db.session.add(akbar)
+db.session.add(warwick)
+db.session.add(timur)
+db.session.add(tess)
+db.session.add(monty)
+db.session.add(crystal)
+db.session.add(reece)
+db.session.add(kieron)
+db.session.add(shanai)
+db.session.add(tyreke)
+db.session.add(reegan)
+db.session.add(darcie)
+db.session.add(hanna)
+db.session.add(duncan)
+db.session.add(kaydee)
 
 
 db.session.commit()
 
-
-emma = Puppy.query.filter_by(name='Emma').first()
-print(emma)
 
 
 # to delete
