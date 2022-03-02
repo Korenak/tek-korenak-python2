@@ -25,6 +25,7 @@ Jinja2 @ file:///tmp/build/80754af9/jinja2_1635780242639/work
 lazy==1.4
 Mako==1.1.6
 MarkupSafe @ file:///C:/ci/markupsafe_1621528502553/work
+mysql-connector==2.2.9
 numpy==1.22.2
 oauth2==1.9.0.post1
 oauthlib==2.1.0
