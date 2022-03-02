@@ -23,7 +23,7 @@ class Puppy(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.Text)
     # 1 to 1
-    owner = db.relationship('Owner',backref='Puppy',uselist=False)
+    owner = db.relationship('Owner',backref='Puppy',uselist=False, cascade="all, delete-orphan")
 
     def __init__(self,name):
         self.name = name
@@ -103,6 +103,21 @@ def del_pup():
         return redirect(url_for('list_pup'))
     return render_template('delete_pup.html', form=form)
 
+@app.route('/update_owner',methods=['GET','POST'])
+def update_owner():
+    form = UpdateOwnerForm()
+
+    if form.validate_on_submit():
+        name= form.name.data
+        pup_id= form.pup_id.data
+
+
+        updated_owner = Owner(name,pup_id)
+        db.session.add(updated_owner)
+        db.session.commit()
+
+        return redirect(url_for('list_pup'))
+    return render_template('update_owner.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
