@@ -3,14 +3,22 @@ from flask import Flask, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from forms import AddForm, DelForm
+import pymysql
+#import secrets
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+#maybe encrypt later?
+'''
+conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
+app.config['SQLALCHEMY_DATABASE_URI'] = conn
+'''
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+# left unencrypted because grader will have to change user and password to hook up to their own mysql database on localhost
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:toor@localhost/sakila"
+#old sqllite.
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 Migrate(app,db)
