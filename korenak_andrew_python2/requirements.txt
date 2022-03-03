@@ -1,5 +1,6 @@
 alembic==1.7.6
 blinker==1.4
+cached-property==1.5.2
 cachelib==0.6.0
 certifi==2021.10.8
 cffi==1.15.0
@@ -20,11 +21,13 @@ Flask-WTF==1.0.0
 greenlet==1.1.2
 httplib2==0.20.4
 idna==3.3
+inflection==0.5.1
 itsdangerous @ file:///tmp/build/80754af9/itsdangerous_1621432558163/work
 Jinja2 @ file:///tmp/build/80754af9/jinja2_1635780242639/work
 lazy==1.4
 Mako==1.1.6
 MarkupSafe @ file:///C:/ci/markupsafe_1621528502553/work
+mypy-extensions==0.4.3
 mysql-connector==2.2.9
 numpy==1.22.2
 oauth2==1.9.0.post1
@@ -40,7 +43,10 @@ requests==2.27.1
 requests-oauthlib==1.1.0
 six==1.16.0
 SQLAlchemy==1.4.31
+sqlalchemy-orm==1.2.2
 SQLAlchemy-Utils==0.38.2
+typing-inspect==0.7.1
+typing_extensions==4.1.1
 urllib3==1.26.8
 URLObject==2.4.3
 Werkzeug @ file:///opt/conda/conda-bld/werkzeug_1645628268370/work

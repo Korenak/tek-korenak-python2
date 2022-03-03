@@ -7,11 +7,7 @@ import pymysql
 #import secrets
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-#maybe encrypt later?
-'''
-conn = "mysql+pymysql://{0}:{1}@{2}/{3}".format(secrets.dbuser, secrets.dbpass, secrets.dbhost, secrets.dbname)
-app.config['SQLALCHEMY_DATABASE_URI'] = conn
-'''
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'mysecretkey'
