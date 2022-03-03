@@ -49,6 +49,9 @@ color_slice = dog_colors[:count]
 innermerge['Color']=color_slice
 # value count on Color and add a new column named color_count
 dog_color_count= innermerge.value_counts(['Color']).reset_index(name='Color_Count')
+'''
+see below print statements for more important stuff!
+'''
 # print('--------Print Dogs Table------------')
 # print(my_dogs)
 print('---------Print Dogs Shape(rows) -----------')
@@ -66,11 +69,17 @@ print(innermerge)
 print('---------Filter by Colors -----------')
 print(dog_color_count)
 
-#pandas can output as a csv!!!
-dog_color_count.to_csv('color_count.csv')
+#pandas can output as a csv!!! index false saves it without the added pd index!
+# this avoids duplicate indexes when we load it back in a little later
+dog_color_count.to_csv('color_count.csv', index=False)
+
+# You could read that csv back into cirulation by
+data = pd.read_csv('color_count.csv')
+# then assign the conents of the csv to a data frame
+dog_color_count = pd.DataFrame(data)
 
 # It can also send a dataframe back up to MySQL server!!! Check for the new
-# table dog_color_count in MySQL 
+# table dog_color_count in MySQL
 dbConn = engine.connect()
 tableN= "dog_color_count"
 dog_colors = pd.DataFrame(data=dog_color_count)

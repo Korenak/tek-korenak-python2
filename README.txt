@@ -40,8 +40,12 @@ could allow from a list of characters or deny based on a list of characters.
 Once you are done poking around the site you can move on to the pand.py file
 in pand.py I import my tables back from the MySQL server as pandas dataframes
 
-shapes of dataframes, merging dataframes, adding a column of colors to datafames,
-counting the number of times one of those colors appeared. Even a command at the
- end to create a color_count.csv file in the directory!
- There are some notes lines that attempt to describe what I was doing and my
- mental process in some of these requests.
+Shapes of dataframes, merging dataframes, adding a column of colors to datafames,
+counting the number of times one of those colors appeared.
+Even a command at the
+end to create a color_count.csv file, grab that csv file, convert it back into
+a data frame, then load it to the MySQL database! Un-needed steps, but it shows
+that the concept of saving and loading as csv is possible, and even putting
+things back up into MySQL server after manipulation is doable.
+I love how you can go into the website make a bunch of new or delete a bunch of
+ dogs, and then run pand.py again to see the new results.
