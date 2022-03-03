@@ -1,4 +1,5 @@
 import os
+import config
 from flask import Flask, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -9,11 +10,16 @@ import pymysql
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-
 app.config['SECRET_KEY'] = 'mysecretkey'
-# left unencrypted because grader will have to change user and password to hook up to their own mysql database on localhost
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:toor@localhost/sakila"
-#old sqllite.
+
+'''
+change values in config.py to change every instance of this across all files
+'''
+conn= "mysql+pymysql://{0}:{1}@{2}/{3}".format(config.username, config.password, config.host, config.schema)
+app.config['SQLALCHEMY_DATABASE_URI'] = conn
+# pre config file uri connection.
+#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:toor@localhost/sakila"
+#old sqllite option. ignore
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
