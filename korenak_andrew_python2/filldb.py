@@ -6,7 +6,6 @@ from flask import Flask
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
-# If the mysql line isn't working for you comment it out and use the sqlite one.
 
 # Create 20 puppies
 brady = Puppy('Brady')
